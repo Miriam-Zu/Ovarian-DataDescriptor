@@ -1,0 +1,78 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r warning = FALSE}
+library("immunarch")
+```
+
+# load data
+All Samples (H+OC) TRA and TRB concatenated 
+```{r}
+immdata<-repLoad("/path/to/concatenated/A_B/")
+```
+
+```{r}
+# add bool column to metadata indicating whether sample is from HD (0) or from OC patient (1)
+immdata$meta$disease <- ifelse(endsWith(immdata$meta$Sample, "H"), 0, 1)
+```
+
+# subsample
+1. Omit 21_H, 49_H
+```{r}
+immdata$data[which(names(immdata$data) %in% c("21_A_B_H", "49_A_B_H"))] <- NULL
+```
+
+2. subsample
+```{r}
+sub = repSample(immdata$data, .method = "downsample", .n = 24840)
+```
+
+# analysis
+1. unique
+2. clonality (top, rare)
+3. diversity (true diversity, inverse simpson, gini simpson)
+
+1. unique
+```{r}
+uniq<-repExplore(sub, .method = "volume")
+
+vis(uniq, .by = c("disease"), .meta = immdata$meta)
+```
+
+2. clonality
+```{r}
+top <- repClonality(sub, .method = "top", .head= c(10,100,1000,3000,10000,30000)) 
+
+vis(top, .by = c("disease"), .meta = immdata$meta)
+```
+
+```{r}
+rare <- repClonality(sub, .method = "rare")
+
+vis(rare, .by = c("disease"), .meta = immdata$meta)
+```
+
+3. diversity
+```{r}
+trued <- repDiversity(sub, .method = "div", .verbose = F)
+
+vis(trued, .by = c("disease"), .meta = immdata$meta)
+```
+
+```{r}
+inv <- repDiversity(sub, .method = "inv.simp", .verbose = F)
+
+vis(inv, .by = c("disease"), .meta = immdata$meta)
+```
+
+```{r}
+simp <- repDiversity(sub, .method = "gini.simp", .verbose = F)
+
+vis(simp, .by = c("disease"), .meta = immdata$meta)
+```
+
+
+
+
