@@ -1,0 +1,63 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r warning = FALSE}
+library("immunarch")
+```
+
+# load data
+All Samples (H+OC) TRA and TRB 
+```{r}
+# alpha chain
+immdataA<-repLoad("/path/to/TRA/")
+
+# beta chain
+immdataB<-repLoad("/path/to/TRB/")
+```
+
+# alpha stats
+```{r}
+# clone count
+countA <- repExplore(immdataA$data, .method = "clones", .col = "aa", .coding = TRUE)
+sum(countA$Clones)
+```
+
+```{r}
+# mean clones per sample
+mean(countA$Clones)
+```
+
+```{r}
+# clonotypes count
+uniqueA <- repExplore(immdataA$data, .method = "volume", .col = "aa", .coding = TRUE)
+```
+
+```{r}
+# mean clonotypes per sample
+mean(uniqueA$Volume)
+```
+
+# beta stats
+```{r}
+# clone count
+countB <- repExplore(immdataB$data, .method = "clones", .col = "aa", .coding = TRUE)
+sum(countB$Clones)
+```
+
+```{r}
+# mean clones per sample
+mean(countB$Clones)
+```
+
+```{r}
+# clonotypes count
+uniqueB <- repExplore(immdataB$data, .method = "volume", .col = "aa", .coding = TRUE)
+```
+
+```{r}
+# mean clonotypes per sample
+mean(uniqueB$Volume)
+```
+
