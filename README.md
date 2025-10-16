@@ -41,4 +41,4 @@ This repository accompanies the publication:
 
 ## Data Availability
 
-- The raw data is available on Zenodo.
+- The Rep-Seq data were deposited in the NCBI BioProject database under accession number [PRJNA1152888](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1152888).
