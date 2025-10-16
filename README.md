@@ -1,7 +1,14 @@
 # Ovarian-DataDescriptor
 
 This project involves the analysis of immune repertoire data obtained from the blood samples of healthy donors (HD) and ovarian cancer (OC) patients. 
-The immune repertoire data includes T-cell receptor alpha (TRA) and beta (TRB) sequences obtained through Repertoire Sequencing (Rep-Seq). 
+The immune repertoire data includes T-cell receptor alpha (TRA) and beta (TRB) sequences obtained through Repertoire Sequencing (Rep-Seq).
+
+This repository accompanies the publication:
+
+**Zuckerbrot-Schuldenfrei, M.**, *et al.*  
+**"The compositional behavior of the human T cell receptor repertoire in ovarian cancer compared to healthy donors"**  
+*Scientific Data*, 2025.  
+[https://www.nature.com/articles/s41597-024-04335-4](https://www.nature.com/articles/s41597-024-04335-4)
 
 ## Data Collection and Processing
 
